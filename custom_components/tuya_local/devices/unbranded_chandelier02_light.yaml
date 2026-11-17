@@ -1,0 +1,42 @@
+name: Chandelier light (CCT)
+products:
+  - id: bsbvdq2iyhmdec5y
+    model: Chandelier-02
+entities:
+  - entity: light
+    dps:
+      - id: 20
+        type: boolean
+        name: switch
+      - id: 21
+        type: string
+        name: color_mode
+        hidden: true
+        mapping:
+          - dps_val: white
+            value: color_temp
+      - id: 22
+        type: integer
+        name: brightness
+        range:
+          min: 10
+          max: 1000
+      - id: 23
+        type: integer
+        name: color_temp
+        range:
+          min: 0
+          max: 1000
+        mapping:
+          - target_range:
+              min: 2700
+              max: 6500
+  - entity: text
+    name: Scene
+    category: config
+    hidden: true
+    dps:
+      - id: 25
+        type: hex
+        optional: true
+        name: value
